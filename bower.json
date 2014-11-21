@@ -1,0 +1,16 @@
+{
+  "name": "pants-path",
+  "version": "0.1.0",
+  "authors": [
+    "Ganesha <reekoheek@gmail.com>"
+  ],
+  "description": "pants path and data container",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

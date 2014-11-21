@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Container Example</title>
+</head>
+<body>
+    <script type="text/javascript" src="../js/path.js"></script>
+
+    <script type="text/javascript">
+    (function(root) {
+        "use strict";
+
+        var path = pants.path.get('hello.world');
+        if (path.length !== 2 || path[0] !== 'hello' || path[1] !== 'world') {
+            throw '[ERR] pants.path.get is invalid';
+        } else {
+            console.log('[OK] pants.path.get');
+        }
+
+        var context = {
+            existingData: 'existingData'
+        };
+
+        pants.path(context).set('anu.gemes', 'anu.gemes');
+        if (context.anu.gemes !== 'anu.gemes') {
+            throw '[ERR] pants.path(x).set is invalid';
+        } else {
+            console.log('[OK] pants.path(x).set');
+        }
+
+        pants.path().set('anu.gemes', 'anu.gemes');
+        if (context.anu.gemes !== 'anu.gemes') {
+            throw '[ERR] pants.path().set is invalid';
+        } else {
+            console.log('[OK] pants.path().set');
+        }
+
+        var value = pants.path().get('anu.gemes');
+        if (value !== 'anu.gemes') {
+            throw '[ERR] pants.path().get is invalid';
+        } else {
+            console.log('[OK] pants.path().get');
+        }
+    })(this);
+    </script>
+</body>
+</html>
