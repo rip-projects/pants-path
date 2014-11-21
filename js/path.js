@@ -66,6 +66,21 @@
     };
 
     var defaultContext = new Context();
+    defaultContext.get = function(pathString) {
+        var data = Context.prototype.get.call(this, pathString);
+        if (data === undefined) {
+            var nodeContent = document.getElementById(pathString),
+                textContent;
+            if (nodeContent) {
+                textContent = nodeContent.innerHTML;
+                data = pants.parse(textContent, nodeContent.getAttribute('type'));
+                this.set(pathString, data);
+            }
+
+        }
+
+        return data;
+    };
 
     var hasEval = (function() {
         // Don't test for eval if we're running in a Chrome App environment.
