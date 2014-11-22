@@ -2,7 +2,7 @@ pants-path
 ==========
 
 [![License](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](https://github.com/xinix-technology/pants-path/blob/master/LICENSE)
-[![Bower](http://img.shields.io/bower/v/xinix-technology/pants.svg?style=flat-square)](https://github.com/xinix-technology/pants-path)
+[![Bower](http://img.shields.io/bower/v/xinix-technology/pants-path.svg?style=flat-square)](https://github.com/xinix-technology/pants-path)
 
 Pustaka pembantu pants ini dapat digunakan untuk memberikan kemampuan data container pada aplikasi tanpa mengotori namespace global. Data pada containernya dapat diakses melalui string path tertentu seperti `user.name.first_name`.
 
