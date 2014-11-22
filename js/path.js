@@ -41,30 +41,50 @@
 } (this, function() {
     "use strict";
 
-    var path = function(context) {
+    /**
+     * Get context with specified rootData
+     * @param  {object} rootData
+     * @return {Context}
+     */
+    var path = function(rootData) {
         if (arguments.length === 0) {
             return defaultContext;
         }
 
-        return new Context(context);
+        return new Context(rootData);
     };
 
-    var Context = path.Context = function(context) {
-        this.context = context || {};
+    /**
+     * Context contructor
+     * @param {object} rootData
+     */
+    var Context = path.Context = function(rootData) {
+        this.rootData = rootData || {};
     };
 
+    /**
+     * Set data into context on path string specified.
+     * @param {string} pathString
+     * @param {var} data
+     */
     Context.prototype.set = function(pathString, data) {
-        return this.getPath(pathString).set(this.context, data);
+        return this.getPath_(pathString).set(this.rootData, data);
     };
 
+    /**
+     * Get data from context on path string specified.
+     * @param  {string} pathString
+     * @return {var}
+     */
     Context.prototype.get = function(pathString) {
-        return this.getPath(pathString).get(this.context);
+        return this.getPath_(pathString).get(this.rootData);
     };
 
-    Context.prototype.getPath = function(pathString) {
+    Context.prototype.getPath_ = function(pathString) {
         return path.get(pathString);
     };
 
+    // Instance of default context to be returned by pants.path(void)
     var defaultContext = new Context();
     defaultContext.get = function(pathString) {
         var data = Context.prototype.get.call(this, pathString);
@@ -296,6 +316,11 @@
 
     var constructorIsPrivate = {};
 
+    /**
+     * [Path description]
+     * @param {[type]} parts        [description]
+     * @param {[type]} privateToken [description]
+     */
     var Path = path.Path = function(parts, privateToken) {
         if (privateToken !== constructorIsPrivate)
             throw Error('Use pants.path.get to retrieve path objects');
@@ -370,7 +395,12 @@
         return pathString;
     };
 
-    Path.prototype.get = function(obj, directObserver) {
+    /**
+     * Get value of path on obj context
+     * @param  {object} obj
+     * @return {var}
+     */
+    Path.prototype.get = function(obj) {
         for (var i = 0; i < this.length; i++) {
             if (obj === null)
                 return;
@@ -409,6 +439,11 @@
         return new Function('obj', str);
     };
 
+    /**
+     * Set value to path on obj context
+     * @param {object} obj
+     * @param {var} value
+     */
     Path.prototype.set = function(obj, value) {
         if (!this.length) {
             return false;
