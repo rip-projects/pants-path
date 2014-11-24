@@ -340,7 +340,7 @@
         if (pathString instanceof Path)
             return pathString;
 
-        if (arguments.length === 0 || pathString === null || pathString.length === 0)
+        if (arguments.length === 0 || !pathString)
             pathString = '';
 
         if (typeof pathString != 'string') {
