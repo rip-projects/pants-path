@@ -36,6 +36,7 @@
         module.exports = factory();
     }else{
         root.pants = root.pants || {};
+        root.pants.$d = {};
         root.pants.path = factory();
     }
 } (this, function() {
@@ -59,7 +60,7 @@
      * @param {object} rootData
      */
     var Context = path.Context = function(rootData) {
-        this.rootData = rootData || {};
+        this.rootData = rootData || pants.$d;
     };
 
     /**
