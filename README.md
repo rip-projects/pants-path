@@ -1,5 +1,6 @@
-pants-path
-==========
+# pants-path
+
+> DEPRECATED: Please use [xin](https://github.com/xinix-technology/xin)
 
 [![License](http://img.shields.io/badge/license-MIT-red.svg?style=flat-square)](https://github.com/xinix-technology/pants-path/blob/master/LICENSE)
 [![Bower](http://img.shields.io/bower/v/xinix-technology/pants-path.svg?style=flat-square)](https://github.com/xinix-technology/pants-path)
